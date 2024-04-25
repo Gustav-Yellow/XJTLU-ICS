@@ -1,9 +1,9 @@
 # XJTLU-ICS
 ICS courses notes
 ## 课程代码对照表
-CPT102 --- Data Structure
-CPT104 --- Operating System
-INT102 --- Algorithm
+CPT102 --- Data Structure <br>
+CPT104 --- Operating System <br>
+INT102 --- Algorithm <br>
 INT104 --- Artificial Intelligence
 ## Git提交方式
 ### SSH
