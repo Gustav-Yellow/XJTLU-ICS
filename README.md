@@ -38,6 +38,7 @@ INT104 --- Artificial Intelligence
 ```git
   git checkout main
   git pull origin main
+  git merge 本地子分支
   git push origin main
 ```
 
