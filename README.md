@@ -30,4 +30,14 @@ INT104 --- Artificial Intelligence
 ```git
   git pull origin 拉取的远程仓库分支，不写默认是main
 ```
+如果此时在子分支，请先将子分支的更新内容提交到远程仓库对应的子分支
+```git
+  git push origin 子分支
+```
+然后再在本地切换到主分支，先使用pull更新内容，再merge本地的子分支的更新之后的内容，如果没有出现冲突就直接提交
+```git
+  git checkout main
+  git pull origin main
+  git push origin main
+```
 
