@@ -1,6 +1,6 @@
 要记得在最后的printf中加"\n"
 
-## Week 1
+# Week 1
 
 1. Write a program that reads a number and then print its multiplication table
 
@@ -109,7 +109,7 @@ int main() {
 }
 ```
 
-## Week 2
+# Week 2
 
 Arrays
 
@@ -311,7 +311,7 @@ int main() {
 }
 ```
 
-## Week 3
+# Week 3
 
 While，Char，Function， Recursion
 
@@ -515,7 +515,7 @@ int main() {
 }
 ```
 
-## Week 4 Memory, Address, Pointer
+# Week 4 Memory, Address, Pointer
 
 如何定义指针变量
 
@@ -763,7 +763,7 @@ int main() {
 }
 ```
 
-## Week 5 struct
+# Week 5 struct
 
 struct调用方式
 
@@ -1114,8 +1114,8 @@ Thread:
 
 ```C
 void *ThreadFunction(){
-printf("Thread created by programmer.\n");
-return NULL;
+	printf("Thread created by programmer.\n");
+	return NULL;
 }
 ```
 
@@ -1187,7 +1187,7 @@ int main(int argc, char *argv[]) {
 }
 ```
 
-2. **Output**
+2. **Output** 这题主要是介绍pthread_join中添加返回指针
 
    First thread calculates a + b. The result 1 is: 120               
 
@@ -1210,18 +1210,18 @@ int b = 100;
 
 void* first_thread(void* arg){
     
-    int sum;
-    sum = a+b;
+  	int sum;
+   	sum = a+b;
     
     
     // store the result in heap memory. 
     //need to allocate a block of memory in heap of a size equal to the size of an integer (4 Bytes). 
     
-    int *pointer1 = (int *)malloc(sizeof(int)); 
-    *pointer1 = sum;
+ 	int *pointer1 = (int *)malloc(sizeof(int)); 
+ 	*pointer1 = sum;
     
 	return pointer1;  // the function returns the result
-	}
+}
 
 
 void* second_thread(void* arg)
@@ -1249,45 +1249,44 @@ void* third_thread(void* arg)
 	
 	return pointer3;   // the function returns the result
 
-	}
+}
 
 int main()
 {
     
-     int i;
-     pthread_t tid[i];
-     int *ptr1;
-     int *ptr2;
-     int *ptr3;
+ 	int i;
+ 	pthread_t tid[i];
+ 	int *ptr1;
+ 	int *ptr2;
+ 	int *ptr3;
      
-// create the threads
-	// 创建线程并执行
+		// create the threads
+		// 创建线程并执行
    	pthread_create(&tid[0], NULL, first_thread,  NULL);
 	pthread_create(&tid[1], NULL, second_thread, NULL);
-	pthread_create(&tid[2], NULL, third_thread,  NULL);
+    pthread_create(&tid[2], NULL, third_thread,  NULL);
     
-// If the ending thread terminated with a return, the second parameter contains a pointer to the return value.	
-    // join轮流执行tid中的三个线程，并且每个线程结束之后的返回值存放在一个指针变量中
-   pthread_join(tid[0], (void*)&ptr1);
-   pthread_join(tid[1], (void*)&ptr2);
-   pthread_join(tid[2], (void*)&ptr3);
-	
+	// If the ending thread terminated with a return, the second parameter contains a pointer to the return value.	
+   	// join轮流执行tid中的三个线程，并且每个线程结束之后的返回值存放在一个指针变量中
+   	pthread_join(tid[0], (void*)&ptr1);
+   	pthread_join(tid[1], (void*)&ptr2);
+    pthread_join(tid[2], (void*)&ptr3);
 	
 	printf("First thread calculates a + b. The result 1 is: %d\n", *ptr1);      //pointer to the address where the result is stored
-	printf("Second thread calculates a * b. The result 2 is: %d\n", *ptr2);
-	printf("Third thread calculates a - b. The result 3 is: %d\n", *ptr3);
+    printf("Second thread calculates a * b. The result 2 is: %d\n", *ptr2);
+    printf("Third thread calculates a - b. The result 3 is: %d\n", *ptr3);
 
 
-// the threads outputs are used to get another value. Display the final value.
+	// the threads outputs are used to get another value. Display the final value.
 
-printf("\nLet's combine the results like this: result 1 + result 2 - result 3.\nThe final value is: %d\n", *ptr1+*ptr2-*ptr3);
+    printf("\nLet's combine the results like this: result 1 + result 2 - result 3.\nThe 			final value is: %d\n", *ptr1+*ptr2-*ptr3);
 	
-	return 0;
+    return 0;
 	
 }
 ```
 
-3. Pthread in C.
+3. Pthread in C. 线程
 
    3 threads instances execute the multiplication by 2, 4 and 6 in parallel. 
 
@@ -1356,3 +1355,703 @@ int main()
 
 
 
+# Week 11 Scheduling Algorithm
+
+1. Write a C program to simulate the **First-Come First-Served FCFS scheduling algorithm** to find **waiting time** and **turnaround time** for the above problem. Arrival time of all process is same 0.
+
+   Process 1 : burst time = 4
+
+   Process 2: burst time = 18
+
+   Process 3: burst time = 9
+
+   Process 4: burst time = 14
+
+   output:
+
+   Process 1 - the burst time: 4, the waiting time: 0, the turnaround time: 4
+
+   Process 1 - the burst time: 4, the waiting time: 0, the turnaround time: 4
+
+   Process 1 - the burst time: 4, the waiting time: 0, the turnaround time: 4
+
+   Process 1 - the burst time: 4, the waiting time: 0, the turnaround time: 4
+
+   ```java
+   #include <stdio.h>
+   #include <string.h>
+   #include <stdlib.h>
+   
+   int main()
+   {
+     // 线程总数
+   	int n;  //total number of process
+   	int i;
+     	// 每个线程的执行时间
+       int bt[] = {4, 18, 9, 14}; // burst time
+   	
+     // 存储每个线程的等待时间
+   	int wt[n];  // waiting time of each process
+     // 存储每个线程的turnaround时间
+   	int tat[n];   // turnaround time of each process
+   	
+     // 等待时间总和
+   	double waiting_total; // sum of waiting times
+   	double turn_around_total; //sum of turnaround times
+   	
+   	double avg_waiting_time;
+   	double avg_turn_around_time;
+   	
+   	waiting_total=0;
+   	turn_around_total=0;
+   	
+   	wt[0]=0;
+   	n = 4;
+   	
+   	for(i=0;i<4;i++)
+   	{
+   		wt[i+1]=bt[i]+wt[i]; // waiting time
+   	}
+   	
+   	
+   	for(i=0;i<4;i++)
+   	{
+   		tat[i]=wt[i]+bt[i];   // turnaround time
+   	}
+   	
+   
+   	for(i=0;i<4;i++)
+   	{
+   		waiting_total+=wt[i]; // sum of wts
+   		turn_around_total+=tat[i];  // sum of tat(s)
+   	}
+   
+   
+       avg_waiting_time = waiting_total/n;   // average waiting time
+       avg_turn_around_time = turn_around_total/n;    // average tat
+   
+   	
+   	for(i=0;i<4;i++)
+   	{
+   		printf("Process %d - the burst time: %d, the waiting time: %d, the turnaround time: %d\n",i+1,bt[i],wt[i],tat[i]);
+   	}
+   	printf("Average waiting time= %.2f\n",avg_waiting_time);    //2 decimals
+   	printf("Average turnaround time= %.2f\n",avg_turn_around_time); 
+   	return 0;
+   }
+   ```
+
+2. Write a C program to implement the non-preemptive **Shortest-Job-First SJF scheduling algorithm** and to find turnaround time and waiting time. Arrival time of all process is same 0
+
+   Output
+
+   For SJF scheduling are:
+
+   Process 0 - the burst time: 4
+
+   Process 1 - the burst time: 18
+
+   Process 2 - the burst time: 9
+
+   Process 3 - the burst time: 12
+
+   
+
+   After Scheduling:
+
+   Process 0 - burst time: 4
+
+    the waiting time: 0, the turnaround time: 4
+
+   
+
+   Process 2 - burst time: 9
+
+    the waiting time: 4, the turnaround time: 13
+
+   
+
+   Process 3 - burst time: 12
+
+    the waiting time: 13, the turnaround time: 25
+
+   
+
+   Process 1 - burst time: 18
+
+    the waiting time: 25, the turnaround time: 43
+
+   
+
+   Average waiting time = 10.50
+
+   Average turnaround time = 22.25
+
+```java
+#include<stdio.h>
+
+void main() {
+    int n; // 进程总数
+    int i, k;
+    int bt[] = {4, 18, 9, 12}; // 各进程的突发时间
+    int sum;
+    int p[n];
+    int wt[n]; // 各进程的等待时间
+    int tt[n]; // 各进程的周转时间
+    double waiting_total; // 总等待时间
+    double turn_around_total; // 总周转时间
+    double avg_waiting_time;
+    double avg_turn_around_time;
+
+    n = 4;
+    wt[0] = 0;
+    tt[0] = 0;
+
+    printf("For SJF scheduling are:\n");
+
+    // 打印初始的突发时间
+    for(i = 0; i < 4; i++) {
+        printf("Process %d - the burst time: %d\n", i, bt[i]);
+    }
+
+    // 初始化进程数组
+    for(i = 0; i < n; i++) {
+        p[i] = i;
+    }
+
+    // 按突发时间对进程排序
+    for(i = 0; i < 4; i++) {
+        for(k = i + 1; k < 4; k++) {
+            if(bt[i] > bt[k]) {
+                // 交换突发时间
+                int temp = bt[i];
+                bt[i] = bt[k];
+                bt[k] = temp;
+                
+                // 交换进程标识
+                temp = p[i];
+                p[i] = p[k];
+                p[k] = temp;
+            }
+        }
+    }
+
+    // 计算等待时间和周转时间
+    for(i = 0; i < 4; i++) {
+        wt[i + 1] = wt[i] + bt[i]; // 计算等待时间
+        tt[i] = wt[i] + bt[i]; // 计算周转时间
+    }
+
+    // 打印调度后的突发时间、等待时间和周转时间
+    printf("\nAfter scheduling...\n");
+    for(i = 0; i < 4; i++) {
+        printf("\nProcess %d - burst time: %d\n", p[i], bt[i]);
+        printf(" the waiting time: %d, the turnaround time: %d\n", wt[i], tt[i]);
+    }
+
+    // 计算总等待时间和总周转时间
+    waiting_total = 0;
+    turn_around_total = bt[0];
+    for(i = 0; i < 4; i++) {
+        waiting_total += wt[i];
+        turn_around_total += tt[i];
+    }
+
+    // 计算平均等待时间和平均周转时间
+    avg_waiting_time = waiting_total / n;
+    avg_turn_around_time = turn_around_total / n;
+
+    // 打印平均等待时间和平均周转时间
+    printf("\nAverage waiting time = %.2f\n", avg_waiting_time);
+    printf("Average turnaround time = %.2f\n", avg_turn_around_time);
+}
+
+```
+
+3. For priority scheduling algorithm, read the number of processes in the system, their CPU burst times, and the priorities. Arrival time of all process is same 0.
+
+   Arrange all the processes in order with respect to their priorities. There may be two processes in queue with the same priority, and then FCFS approach is to be performed. Each process will be executed according to its priority. 
+
+   Calculate and display *the waiting time* and *the turnaround time* of each of the processes accordingly.
+
+   Calculate and display *the average waiting time* and *the average turnaround time* of the system.
+
+   对于优先级调度算法，读取系统中的进程数、CPU突发时间和优先级。所有流程到达时间均为0。
+
+   按照优先顺序安排所有流程。队列中可能有两个具有相同优先级的进程，这时需要执行FCFS方法。每个进程将根据其优先级执行。
+
+   计算并显示每个工序的等待时间和周转时间。
+
+   计算并显示系统的平均等待时间和平均周转时间。
+
+   | Process | BurstTime | Priority |
+   | ------- | --------- | -------- |
+   | P0      | 4         | 1        |
+   | P1      | 3         | 3        |
+   | P2      | 2         | 4        |
+   | P3      | 5         | 2        |
+
+   ```java
+   #include<stdio.h>
+   
+   int main() {
+       int n; // 进程总数
+       n = 4;
+       int i, j;
+       int temp;
+       int process[n]; // 进程数组
+       int burst_time[20] = {4, 3, 2, 5}; // 各进程的突发时间
+       int priority[20] = {1, 3, 4, 2}; // 各进程的优先级
+       int waiting_time[20]; // 各进程的等待时间
+       int turnaround_time[20]; // 各进程的周转时间
+       double average_wait_time;
+       double average_turnaround_time;
+       double waiting_total = 0; // 总等待时间
+       double turn_around_total = 0; // 总周转时间
+   
+       // 初始化进程数组
+       for(i = 0; i < n; i++) {
+           process[i] = i;
+       }
+   
+       // 根据优先级排序
+       for(i = 0; i < n; i++) {
+           for(j = i + 1; j < n; j++) {
+               if(priority[i] > priority[j]) {
+                   // 交换进程标识
+                   temp = process[i];
+                   process[i] = process[j];
+                   process[j] = temp;
+   
+                   // 交换优先级
+                   temp = priority[i];
+                   priority[i] = priority[j];
+                   priority[j] = temp;
+   
+                   // 交换突发时间
+                   temp = burst_time[i];
+                   burst_time[i] = burst_time[j];
+                   burst_time[j] = temp;
+               }
+           }
+       }
+   
+       // 初始化等待时间和周转时间
+       waiting_time[0] = 0;
+       turnaround_time[0] = burst_time[0];
+       average_wait_time = 0;
+       average_turnaround_time = burst_time[0];
+   
+       // 计算等待时间和周转时间
+       for(i = 0; i < n; i++) {
+           if (i > 0) {
+               waiting_time[i] = waiting_time[i - 1] + burst_time[i - 1]; // 计算等待时间
+           }
+           turnaround_time[i] = waiting_time[i] + burst_time[i]; // 计算周转时间
+           waiting_total += waiting_time[i];
+           turn_around_total += turnaround_time[i];
+       }
+   
+       // 计算平均等待时间和平均周转时间
+       average_wait_time = waiting_total / n;
+       average_turnaround_time = turn_around_total / n;
+   
+       // 打印调度结果
+       printf("\nAfter scheduling...\n");
+       for(i = 0; i < n; i++) {
+           printf("\nProcess %d - priority: %d, burst time: %d\n", process[i], priority[i], burst_time[i]);
+           printf(" the waiting time: %d, the turnaround time: %d\n", waiting_time[i], turnaround_time[i]);
+       }
+   
+       // 打印平均等待时间和平均周转时间
+       printf("\nAverage Waiting Time:\t%.2lf", average_wait_time);
+       printf("\nAverage Turnaround Time:\t%.2lf\n", average_turnaround_time);
+   
+       return 0;
+   }
+   
+   ```
+
+# Week 12 Memory Allocation Algorithm
+
+1. The **First Fit Memory Allocation Algorithm** allocates the smallest free partition available in the memory that is sufficient enough to hold the process within the system.
+
+   Write a C program of implementation the First-Fit Memory Allocation algorithm.
+
+   
+
+   **input:**
+
+   Enter the number of blocks:
+
+    4
+
+   Enter block size:
+
+   123
+
+   56
+
+   14
+
+   9
+
+   Enter the number of processes:
+
+    4
+
+   Enter size of each process:
+
+   122
+
+   78
+
+   34
+
+   15
+
+   **output:**
+
+   Block no.	B-size		Process no.		P-size
+
+   1		     123	          	1			122
+
+   2		      56		          3			  34
+
+   3		      14		       Not allocated
+
+   4		       9		        Not allocated
+
+   ```java
+   #include <stdio.h>
+   
+   int main() {
+       // 声明和初始化变量
+       int blocksize[10]; // 存储内存块大小
+       int process_size[10]; // 存储进程大小
+       int block_no; // 内存块数量
+       int process_no; // 进程数量
+       int flags[10]; // 标记内存块是否被分配
+       int allocate[10]; // 存储每个内存块分配的进程号
+       int i, j;
+   
+       // 初始化标志和分配数组
+       for(i = 0; i < 10; i++) {
+           flags[i] = 0;
+           allocate[i] = -1;
+       }
+   
+       // 输入内存块数量和大小
+       printf("Enter the number of blocks:\n");
+       scanf("%d", &block_no);
+   
+       printf("Enter block size:\n");
+       for(i = 0; i < block_no; i++) {
+           scanf("%d", &blocksize[i]);
+       }
+   
+       // 输入进程数量和大小
+       printf("Enter the number of processes:\n");
+       scanf("%d", &process_no);
+   
+       printf("Enter size of each process:\n");
+       for(i = 0; i < process_no; i++) {
+           scanf("%d", &process_size[i]);
+       }
+   
+       // 首次适应算法分配内存
+       for(i = 0; i < process_no; i++) {
+           for(j = 0; j < block_no; j++) {
+               if(flags[j] == 0 && blocksize[j] >= process_size[i]) {
+                   allocate[j] = i; // 记录分配的进程号
+                   flags[j] = 1; // 标记内存块已分配
+                   break;
+               }
+           }
+       }
+   
+       // 打印内存分配结果
+       printf("Block no.\tB-size\t\tProcess no.\t\tP-size\n");
+       for(i = 0; i < block_no; i++) {
+           printf("%d\t\t%d\t\t", i + 1, blocksize[i]);
+           if(flags[i] == 1) {
+               printf("%d\t\t\t%d\n", allocate[i] + 1, process_size[allocate[i]]);
+           } else {
+               printf("Not allocated\n");
+           }
+       }
+   
+       return 0;
+   }
+   ```
+
+2. The **Best-Fit Memory Allocation Algorithm** allocates the smallest free partition available in the memory that is sufficient enough to hold the process within the system with minimum wastage of memory.
+
+   Write a C program of implementation the Best-Fit Memory Allocation algorithm.
+
+   
+
+   **Input** 
+
+   5
+
+   10
+
+   15
+
+   5
+
+   9
+
+   3
+
+   4
+
+   1
+
+   4
+
+   7
+
+   12
+
+   
+
+   **Output** 
+
+   Enter the number of blocks:
+
+   Enter the size of the blocks:
+
+   Block no.1:
+
+   Block no.2:
+
+   Block no.3:
+
+   Block no.4:
+
+   Block no.5:
+
+   Enter the number of processes:
+
+   Enter the size of the processes:
+
+   Process no.1:
+
+   Process no.2:
+
+   Process no.3:
+
+   Process no.4:
+
+   
+
+   Process no.	P-size	Block no.	B-size		Fragment
+
+   1		      1		         5		      3		      2
+
+   2		     4		          3		      5		      1
+
+   3		     7		          4		      9		      2
+
+   4		      12		       2		      15		    3
+
+   ```java
+   #include <stdio.h>
+   
+   // 内存管理方案 - 最佳适应算法
+   
+   int main() {
+       // 声明和初始化变量
+       int fragment[20]; // 存储碎片大小
+       int b[20]; // 存储块大小
+       int p[20]; // 存储进程大小
+       int i, j, tem, low = 9999;
+       int n_b; // 块的数量
+       int n_p; // 进程的数量
+       static int barray[20], parray[20]; // 标记块和进程是否被分配
+   
+       // 输入块的数量
+       printf("Enter the number of blocks:\n");
+       scanf("%d", &n_b);
+   
+       // 输入块的大小
+       printf("Enter the size of the blocks:\n");
+       for(i = 0; i < n_b; i++) {
+           printf("Block no.%d:\n", i);
+           scanf("%d", &b[i]);
+       }
+   
+       // 输入进程的数量
+       printf("Enter the number of processes:\n");
+       scanf("%d", &n_p);
+   
+       // 输入进程的大小
+       printf("Enter the size of the processes:\n");
+       for(i = 0; i < n_p; i++) {
+           printf("Process no.%d:\n", i);
+           scanf("%d", &p[i]);
+       }
+   
+       // 最佳适应算法分配内存
+       for(i = 0; i < n_p; i++) {
+           for(j = 0; j < n_b; j++) {
+               if(barray[j] != 1) { // 块未被分配
+                   tem = b[j] - p[i];
+                   if(tem >= 0 && low > tem) {
+                       parray[i] = j;
+                       low = tem;
+                   }
+               }
+           }
+           fragment[i] = low; 
+           barray[parray[i]] = 1;  
+           low = 9999; // 重置low变量，用于下一个进程的分配
+       }
+   
+       // 显示结果
+       printf("\nProcess no.\tP-size\t\tBlock no.\tB-size\t\tFragment");
+       for(i = 0; i < n_p && parray[i] != 0; i++) {
+           printf("\n%d\t\t%d\t\t%d\t\t%d\t\t%d", i, p[i], parray[i], b[parray[i]], fragment[i]);
+       }
+   
+       return 0;
+   }
+   ```
+
+   The **Worst-Fit Memory Allocation Algorithm** allocates the smallest free partition available in the memory that is sufficient enough to hold the process within the system with minimum wastage of memory.
+
+   Write a C program of implementation the Worst-Fit Memory Allocation algorithm.
+
+   
+
+   **Input**
+
+   Enter the number of blocks:
+
+   5
+
+   Enter the size of the blocks:
+
+   Block no.1:
+
+   10
+
+   Block no.2:
+
+   15
+
+   Block no.3:
+
+   5
+
+   Block no.4:
+
+   9
+
+   Block no.5:
+
+   3
+
+   Enter the number of processes:
+
+   4
+
+   Enter the size of the processes:
+
+   Process no.1:
+
+   1
+
+   Process no.2:
+
+   4
+
+   Process no.3:
+
+   7
+
+   Process no.4:
+
+   12
+
+   
+
+   **Output**
+
+   Process no.	P-size		Block no.	B-size		Fragment
+
+   1		      1		       2		       15		        14
+
+   2		       4		       1		       10		         6
+
+   3		       7		       4		        9		          2
+
+   4		      12		       0		        0		         0
+
+   ```java
+   #include <stdio.h>
+   
+   // 内存管理方案 - 最差适应算法
+   
+   int main() {
+       // 声明和初始化变量
+       int fragment[20]; // 存储碎片大小
+       int b[20]; // 存储块大小
+       int p[20]; // 存储进程大小
+       int i, j, tem, high = 0;
+       int n_b; // 块的数量
+       int n_p; // 进程的数量
+       static int barray[20], parray[20]; // 标记块和进程是否被分配
+   
+       // 输入块的数量
+       printf("Enter the number of blocks:\n");
+       scanf("%d", &n_b);
+   
+       // 输入块的大小
+       printf("Enter the size of the blocks:\n");
+       for(i = 0; i < n_b; i++) {
+           printf("Block no.%d:\n", i);
+           scanf("%d", &b[i]);
+       }
+   
+       // 输入进程的数量
+       printf("Enter the number of processes:\n");
+       scanf("%d", &n_p);
+   
+       // 输入进程的大小
+       printf("Enter the size of the processes:\n");
+       for(i = 0; i < n_p; i++) {
+           printf("Process no.%d:\n", i);
+           scanf("%d", &p[i]);
+       }
+   
+       // 最差适应算法分配内存
+       for(i = 0; i < n_p; i++) {
+           for(j = 0; j < n_b; j++) {
+               if(barray[j] != 1) { // 块未被分配
+                   tem = b[j] - p[i]; // 计算块剩余大小
+                   if(tem >= 0 && high < tem) {
+                       parray[i] = j;
+                       high = tem;
+                   }
+               }
+           }
+           fragment[i] = high; 
+           barray[parray[i]] = 1;  
+           high = 0; // 重置 high 变量，用于下一个进程的分配
+       }
+   
+       // 显示结果
+       printf("\nProcess no.\tP-size\t\tBlock no.\tB-size\t\tFragment");
+       for(i = 0; i < n_p; i++) {
+           printf("\n%d\t\t%d\t\t%d\t\t%d\t\t%d", i, p[i], parray[i], b[parray[i]], fragment[i]);
+       }
+   
+       return 0;
+   }
+   
+   ```
+
+   
