@@ -4,7 +4,8 @@ ICS courses notes
 CPT102 --- Data Structure <br>
 CPT104 --- Operating System <br>
 INT102 --- Algorithm <br>
-INT104 --- Artificial Intelligence
+INT104 --- Artificial Intelligence <br>CPT201 --- Database Development and Design <br>CPT203 --- Software Engineering <br>CAN201 --- Network <br>INT201 --- Decision Computation and Language
+
 ## Git提交方式
 ### SSH
 从右上角的code处复制ssh链接，然后运行如下代码
