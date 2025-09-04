@@ -492,7 +492,7 @@ If an index is applicable to θ
 
       设 i 的最终值为 N（即我们有 N 个运行文档）
 
-  - 在第二阶段，the **runs(已经排序好的子序列)** are **merged**. Suppose, for now, that the total number of runs, *N*, is less than *M*, so that we can allocate one block to each run and have space left to hold one block of output. The merge stage operates as follows：
+  - 在第二阶段，the **runs(已经排序好的子序列)** are **merged**. Suppose, for now, that the **total number of runs, *N***, is less than *M*, so that we can allocate one block to each run and have space left to hold one block of output. The merge stage operates as follows：
 
     **N < M**
   

@@ -436,6 +436,8 @@ If a schedule S can be transformed into a schedule S´ by a series of swaps of *
 
 如果一个附表 S 可以通过一系列 **非冲突** 指令的交换转化为附表 S'，那幺我们说 Sand S' 是 **冲突等价的**。如果调度 S 与 **serial** 调度 **conflict 等效**，则该调度是 **conflict serialisable**。
 
+<img src="imgs/week7/img11.png" style="zoom: 33%;" />
+
 - Example of a schedule that is not conflict serialisable
 
   不可冲突串行化的计划示例

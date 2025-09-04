@@ -98,7 +98,7 @@ Each block contains a **pointer** to the previous block plus a **hash** of the p
 
     如果大多数用户同意,分叉是可能的(基于共识)
 
-- **Digital signature**
+- **Digital signature** （irrefutability  不可辩驳性）
 
   **数字签名**
 
@@ -164,7 +164,7 @@ Summary of blockchain properties
 
   使用私钥签署邮件
 
-## Blockchain Transactions
+## Blockchain Transactions  区块链交易
 
 - Transaction model is specific to each blockchain.
 
@@ -240,7 +240,7 @@ Summary of blockchain properties
 
       节点被选择基于拜占庭共识添加下一个块
 
-### Proof of Work
+### Proof of Work 区块链交易
 
 - To add a block B, a node needs to find a **nonce**, *n*, such that the value of the hash function *h* applied to the concatenation of *n* and *B* (n || B) is less than some specified value.
 
@@ -260,7 +260,7 @@ Summary of blockchain properties
 
     由于节点试图添加到最长链的最近块中,最终较短分叉上的块是孤立的
 
-### Proof of Stake
+### Proof of Stake  权益证明
 
 - To allow nodes holding a large stake in the currency of the blockchain to be chosen preferentially. 
 
@@ -308,7 +308,7 @@ Summary of blockchain properties
 
     但可以接受(远低于 PoW 和 PoS 挖矿的成本)
 
-## Sybil Attacks
+## Sybil Attacks  西比尔攻击
 
 A **Sybil attack** is an attempt to overwhelm the consensus algorithm by adding a large number of nodes.
 
@@ -396,15 +396,17 @@ Protection against Sybil attack:
 
     插入和删除:通过创建指向数据结构中未更改部分的新根来执行更新。
 
-### Markle Tree
+### Markle Tree  马克尔树
 
 <img src="imgs/week12/img10.png" style="zoom:50%;" />
 
 <img src="imgs/week12/img11.png" style="zoom:50%;" />
 
-### Case Study: Merkle Proof of Membership
+### Case Study: Merkle Proof of Membership  案例研究: Merkle 会员证明
 
 Task: to prove that transaction ‘a’ is part of this Merkle tree.
+
+任务:证明交易"a"是这棵默克尔树的一部分。
 
 <img src="imgs/week12/img12.png" style="zoom:50%;" />
 

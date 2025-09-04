@@ -460,7 +460,7 @@
 
       在成本因素中包括**回滚次数**,以避免饥饿。
 
-## Graph-Based Protocols 基于图的协议
+## Graph-Based Protocols 基于图的协议 (Optional)
 
 - Graph-based protocols are an alternative to **two-phase locking**
 
@@ -541,6 +541,8 @@ Schedules not possible under two-phase locking are possible under tree protocol,
 - A data item that has been locked and unlocked by T<sub>i</sub> cannot subsequently be relocked by T<sub>i</sub>
 
   一个被 Ti 锁定和解锁的数据项不能再被 Ti 重新锁定
+
+<img src="imgs/week8/img4.png" style="zoom:50%;" />
 
 ### Lock Granularities - Motivation 锁定粒度动机
 

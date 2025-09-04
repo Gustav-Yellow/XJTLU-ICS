@@ -158,7 +158,7 @@
 
 - etc
 
-### Eventual consistency  最终一致性
+### Eventual consistency  最终一致性 （重点）
 
 - NoSQL softens the ACID properties in relational databases to allow horizontal scalability. 
 

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<class>
+   <student rollno = "393">
+      <firstname>dinkar</firstname>
+      <lastname>kad</lastname>
+      <nickname>dinkar</nickname>
+      <marks>85</marks>
+   </student>
+   
+   <student rollno = "493">
+      <firstname>Vaneet</firstname>
+      <lastname>Gupta</lastname>
+      <nickname>vinni</nickname>
+      <marks>95</marks>
+   </student>
+   
+   <student rollno = "593">
+      <firstname>jasvir</firstname>
+      <lastname>singn</lastname>
+      <nickname>jazz</nickname>
+      <marks>90</marks>
+   </student>
+</class>
