@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Example</title>
+</head>
+<body>
+    <p>Please submit your comments: </p>
+    <form action="" method="post">
+        <!-- Name Input -->
+         <label for="name">Full Name: </label>
+         <input type="text" id="name" anem="name" required>
+         <br><br>
+
+        <!-- Email Input -->
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+        <br><br>
+
+        <!-- Password Input -->
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+        <br><br>
+
+        <!-- gender Selection (Radio buttons) -->
+        <label>Gender:</label>
+        <input type="radio" id="male" name="gender" value="male">
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="femail">
+        <label for="female">Female</label>
+        <br><br>
+
+        <!-- Hobbies (Checkboxs) -->
+        <label>Hobbies:</label>
+        <input type="checkbox" id="sports" name="hobbies" value="sports">
+        <lable for="sports">Sports</lable>
+        <input type="checkbox" id="music" name="hobbies" value="music">
+        <label for="music">Music</label>
+        <input type="checkbox" id="reading" name="hobbies" value="reading">
+        <label for="reading">Reading</label>
+        <br><br>
+
+        <!-- Language Selection (Dropdown) -->
+        <label for="language">Choose a language:</label>
+        <select id="language" name="language">
+            <option value="python">Python</option>
+            <option value="java">Java</option>
+            <option value="c++">C++</option>
+            <option value="others">Others</option>
+        </select>
+        <br><br>
+
+        <!-- Comments (Textarea) -->
+        <label for="comments">Comments:</label>
+        <br>
+        <textarea id="comments" name="comments" rows="4" cols="30"></textarea>
+        <br><br>
+
+        <!-- Submit Button -->
+         <input type="submit" value="Submit">
+
+    </form>
+</body>
+</html>

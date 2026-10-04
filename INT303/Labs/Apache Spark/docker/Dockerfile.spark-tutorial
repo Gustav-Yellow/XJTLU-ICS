@@ -1,0 +1,15 @@
+FROM piotrszul/pyspark:latest
+
+MAINTAINER Piotr Szul
+
+USER root 
+
+#Ship some data for workshop
+COPY data $HOME/spark-tutorial/data
+COPY notebooks $HOME/spark-tutorial/notebooks 
+
+RUN chown jovyan:jovyan $HOME/spark-tutorial -R
+
+USER jovyan
+WORKDIR $HOME/spark-tutorial/notebooks
+

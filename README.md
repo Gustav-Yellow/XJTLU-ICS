@@ -13,16 +13,20 @@ INT104 --- Artificial Intelligence <br>
 
 ### Year 3
 
-CPT201 --- Database Development and Design <br>CPT202 --- Software Programming Project <br>CPT203 --- Software Engineering <br>CPT204 --- Advanced OOP Programming <br>CPT208 --- Human Centric Computing <br>CAN201 --- Network <br>INT201 --- Decision Computation and Language
+CPT201 --- Database Development and Design <br>CPT202 --- Software Programming Project I <br>CPT203 --- Software Engineering <br>CPT204 --- Advanced OOP Programming <br>CPT208 --- Human Centric Computing <br>CAN201 --- Network <br>INT201 --- Decision Computation and Language
 
 ### Year 4 
 
-To be continue...
+INT301 --- Bio Computation<br>INT303 --- Big Data Analytics<br>INT305 --- Machine Learning<br>CAN302 --- E-Commerce<br>CAN304 --- Computer System Security<br>CPT304 --- Software Programming Project II 
 
 ## 补充信息
 
 - 暂时没有 "CPT111 --- Java Programming" 的笔记资料，因为我记得当时在上这门课的时候更多的还是去参与 Lab 以及 Tutorial，然后多写代码。Lecture 上的理论知识实际上更需要通过实操来完成，而非死记硬背。
 - 有关 Year 2 中的课程笔记，我当时没有转换成 PDF，所以现在上传的基本上都是 Markdown 格式的文件。如果想要通过 Markdown 来浏览笔记，最好是有合适的 Markdown 阅读器（比如我用的就是 Typora）。此外要注意图片的路径。请将每个课程笔记中的 imgs 文件夹放在和 .md 笔记相同路径下，因为基本上所有的笔记中的图片地址我都是从笔记文件的当前路径开始写的，如果 imgs 放在不正确的位置，那么可能会导致打开笔记的时候看不到图片内容。最好的方式就是在下载每个课程的 Notes 之后，不要修改 imgs 和 .md 的位置。
-- Year 3 的笔记中我都添加了已经转换好的 PDF 格式。但是我觉得还是有必要提供 .md 格式，因为这样可以让大家自由编辑。
+- Year 3 和 Year 4 的笔记中我都添加了已经转换好的 PDF 格式。但是我觉得还是有必要提供 .md 格式，因为这样可以让大家自由编辑。
 
-- 后续还会更新大四的课程内容
+- 笔记中通常没有提供往年的期末试卷（畏惧学校的大手）。
+
+- 祝大家的学习能够一帆风顺，如果希望进一步了解，也欢迎随时向我留言。
+
+- （最后夹带一下私货，如果对 LLM 微调感兴趣，强推我的 Final Year Projet 导师，也是 CPT201 的老师 `Wang Wei`。这位老师是初见生人勿近，但是深入交流之后会发现非常风趣随和，虽然有点老学究，但是对学生非常的 nice，如果感兴趣的同学也可以多去了了解一下这位老师。）

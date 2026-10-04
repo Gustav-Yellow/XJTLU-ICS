@@ -1,0 +1,16 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: powderblue;
+}
+
+h1 {
+    color: #007BFF;
+}
+
+ul {
+    list-style-type: square;
+}
+
+.highlight {
+    background-color: yellow;
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Print Tree</title>
+        <script>
+            function printTree() {
+                height = document.getElementById("num").value;
+                let tree = '';
+                for (let i=0; i<height; i++) {
+                    let line = '';
+
+                    for (let j=0; j<height-i; j++) {
+                        line += '~';
+                    }
+
+                    for (let j=0; j<2*i+1; j++) {
+                        line += '*';
+                    }
+
+                    for (let j=0; j<height-i; j++) {
+                        line += '~';
+                    }
+                    line += '\n';
+                    tree += line;
+                }
+                const pre = document.createElement('pre');
+                pre.textContent = tree;
+                document.body.appendChild(pre);
+            }
+        </script>
+    </head>
+    <body>
+        <input type="text" id="num" />
+        <button onclick="printTree()">Print Tree</button>
+    </body>
+</html>

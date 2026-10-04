@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filtered Book API</title>
+</head>
+
+<body>
+    <h1>List of Books</h1>
+    <input type="text" id="authorInput" placeholder="Enter author name">
+    <button onclick="fetchBooks()">Search</button>
+    <ul id="bookList"></ul>
+
+    <script>
+        function fetchBooks() {
+            const author = document.getElementById('authorInput').value;
+            let url = 'getAPI.php';
+            if (author) {
+                url += `?author=${author}`;
+            }
+            fetch(url)
+              .then(response => response.json())
+              .then(data => {
+                    const bookList = document.getElementById('bookList');
+                    bookList.innerHTML = '';
+                    data.forEach(book => {
+                        const listItem = document.createElement('li');
+                        listItem.textContent = `${book.title} by ${book.author}`;
+                        bookList.appendChild(listItem);
+                    });
+                })
+              .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CSS Selector</title>
+        <style>
+            #d11 + .childcntl {
+                color: red;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="d1">
+            <p>Level1</p>
+            <p>Level1</p>
+
+            <div id="d11" class="childcntl">
+                <p>--Level2</p>
+                <p>--Level2</p>
+                <span>------</span>
+                <div><p>----Level3</p></div>
+            </div>
+
+            <div id="d12" class="childcntl">
+                <p>--Level2</p>
+                <p>--Level2</p>
+            </div>
+
+            <p>Level1</p>
+        </div>
+    </body>
+</html>

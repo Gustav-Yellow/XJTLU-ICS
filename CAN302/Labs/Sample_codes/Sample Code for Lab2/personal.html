@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Personal Webpage</title>
+        <link rel="stylesheet" type="text/css" href="newstyles.css">
+    </head>
+    <body>
+        <header>
+            <h1>Hello World</h1>
+            <nav>
+                <ul>
+                    <li><a href="#about">About Me</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact Me</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="welcome">
+            <h2>Welcome to My Homepage</h2>
+            <p>I'm a passionate web developer.</p>
+        </section>
+
+        <section id="about">
+            <h2>About Me</h2>
+            <img src="img/cat.jpg" alt="profile picture" class="profile-pic">
+            <p>A short bio about you and your skills.</p>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="project">
+                <h3>Project 1</h3>
+                <p>Description of the project.</p>
+            </div>
+            <div class="project">
+                <h3>Project 2</h3>
+                <p>Description of the project.</p>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <form>
+                <label for="name">Name:</label>
+                <input type="text" id="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" required></textarea>
+
+                <button type="submit">Send</button>
+            </form>
+        </section>
+    </body>
+</html>

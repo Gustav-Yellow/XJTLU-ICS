@@ -1,0 +1,12 @@
+{
+ "display_name": "PySpark",
+ "language": "python",
+ "argv": [
+  "/opt/conda/envs/python2/bin/python",
+  "-m",
+  "ipykernel_launcher",
+  "-f",
+  "{connection_file}",
+  "--IPKernelApp.exec_lines=['from IPython.display import display','%matplotlib inline', 'pyspark.sql.dataframe.DataFrame._repr_html_ = lambda self:self.toPandas()._repr_html_()']"
+ ]
+}

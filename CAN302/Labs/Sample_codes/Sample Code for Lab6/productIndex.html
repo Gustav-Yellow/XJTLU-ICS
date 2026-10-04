@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Product API</title>
+</head>
+
+<body>
+    <h1>Product List (from API)</h1>
+    <ul id="productList"></ul>
+
+    <script>
+        // Fetch product data from API
+        fetch('productAPI.php')
+        .then(response => response.json())
+        .then(data => {
+            const productList = document.getElementById("productList");
+            data.forEach(product => {
+                const li = document.createElement("li");
+                li.textContent = product.name + " - $"+ product.price;
+                productList.appendChild(li);
+            });
+        })
+        .catch(error => console.error("Error:", error));
+    </script>
+</body>
+
+</html>

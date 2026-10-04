@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的个人主页</title>
+    <!-- 引入 CSS 文件 -->
+    <link rel="stylesheet" href="newstyles.css">
+</head>
+<body>
+
+    <!-- 头部区域：包含名字和导航菜单 -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">张三的个人主页</div>
+            <nav>
+                <ul>
+                    <li><a href="#welcome">首页</a></li>
+                    <li><a href="#about">关于我</a></li>
+                    <li><a href="#projects">项目展示</a></li>
+                    <li><a href="#contact">联系方式</a></li>
+                    <!-- 练习要求：Hyperlink to XJTLU homepage -->
+                    <li><a href="https://www.xjtlu.edu.cn" target="_blank">西交利物浦大学</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 欢迎区域：简介和头像 -->
+    <section id="welcome" class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <img src="https://via.placeholder.com/150" alt="个人头像" class="profile-pic">
+                <h1>你好，我是张三！</h1>
+                <p>欢迎来到我的个人网站。我是一名热爱编程和设计的学生。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于区域：包含课程列表和时间表 -->
+    <section id="about" class="section-padding">
+        <div class="container">
+            <h2>关于我</h2>
+            <p>这里是我的简短自我介绍。我喜欢探索新技术，解决复杂的问题。</p>
+            
+            <!-- 练习要求：Favorite courses (at least 3) -->
+            <h3>我最喜欢的课程</h3>
+            <ul class="course-list">
+                <li>Web 开发基础 (Fundamentals of Web Development)</li>
+                <li>数据结构与算法 (Data Structures and Algorithms)</li>
+                <li>用户体验设计 (User Experience Design)</li>
+            </ul>
+
+            <!-- 练习要求：Timetable of this semester -->
+            <h3>本学期时间表</h3>
+            <table class="timetable">
+                <thead>
+                    <tr>
+                        <th>时间</th>
+                        <th>周一</th>
+                        <th>周三</th>
+                        <th>周五</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>09:00 - 10:30</td>
+                        <td>Web 开发</td>
+                        <td>数据结构</td>
+                        <td>UX 设计</td>
+                    </tr>
+                    <tr>
+                        <td>13:00 - 14:30</td>
+                        <td>数学基础</td>
+                        <td>小组项目</td>
+                        <td>自由学习</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- 项目区域：至少两个项目 -->
+    <section id="projects" class="section-padding bg-light">
+        <div class="container">
+            <h2>项目展示</h2>
+            <div class="project-grid">
+                <!-- 项目 1 -->
+                <div class="project-card">
+                    <h3>个人博客系统</h3>
+                    <p>使用 HTML, CSS 和 JavaScript 构建的一个响应式个人博客，支持文章发布和评论功能。</p>
+                </div>
+                <!-- 项目 2 -->
+                <div class="project-card">
+                    <h3>天气查询应用</h3>
+                    <p>调用第三方 API 实现的实时天气查询工具，界面简洁，数据准确。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系区域：包含表单 -->
+    <section id="contact" class="section-padding">
+        <div class="container">
+            <h2>联系我</h2>
+            <form class="contact-form" action="#" method="POST">
+                <div class="form-group">
+                    <label for="name">姓名:</label>
+                    <input type="text" id="name" name="name" required placeholder="请输入您的姓名">
+                </div>
+                <div class="form-group">
+                    <label for="email">邮箱:</label>
+                    <input type="email" id="email" name="email" required placeholder="example@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="message">留言:</label>
+                    <textarea id="message" name="message" rows="5" required placeholder="请写下您的留言..."></textarea>
+                </div>
+                <button type="submit" class="btn-submit">发送消息</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 张三。All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

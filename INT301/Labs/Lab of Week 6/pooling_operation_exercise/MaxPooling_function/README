@@ -1,0 +1,27 @@
+Mex implementation of the max-pooling operation for 4D tensors.
+Supports also the case when the input dims (rows, cols) are not multiples of the
+pooling dims.
+
+It is a template function and at the moment single and double precision are 
+supported.
+
+Implements also a multithread processing using openmp along the channels.
+
+To compile without openmp:
+    mex CFLAGS="-funroll-loops -O2" MaxPooling.cpp 
+
+To compile with openmp:
+    /Applications/MATLAB_R2010b.app/bin/mex MaxPooling.cpp -v 
+        LDFLAGS="\$LDFLAGS -fopenmp" 
+        CXXFLAGS="\$CXXFLAGS -fopenmp -O2 -funroll-loops" 
+        CFLAGS="\$CFLAGS -fopenmp -O2 -funroll-loops" 
+        COPTIMFLAGS="$COPTIMFLAGS -fopenmp" 
+        CC="gcc-4.2 -DOPENMP" CXX="g++-4.2 -DOPENMP" LD="g++-4.2"
+        -largeArrayDims 
+        
+
+in practice just define OPENMP with the corresponding flags.
+
+July 11, 2011 
+Implemented the first version of the mex file. Tested a little and seems ok.
+- Jonathan Masci

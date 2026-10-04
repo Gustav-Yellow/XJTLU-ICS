@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Selector</title>
+    <style>
+        /* 也可以不写小于号 */
+        #d1 > div > p {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="d1">
+        <p>Level 1</p>
+        <p>Level 1</p>
+
+        <div id="d11" class="childcntl">
+            <p>--Level 2</p>
+            <p>--Lebel 2</p>
+            <span>------</span>
+            <div><p>---Lebel 3</p></div>
+        </div>
+
+        <div id="d12" class="childcntl">
+            <p>--Level 2</p>
+            <p>--Level 2</p>
+        </div>
+
+        <p>Level 1</p>
+    </div>
+    
+</body>
+</html>

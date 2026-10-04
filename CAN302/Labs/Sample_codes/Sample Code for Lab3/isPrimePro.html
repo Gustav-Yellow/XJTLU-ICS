@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Check Prime</title>
+        <script>
+            function isPrime(){
+                n = document.getElementById("num").value;
+                var flag = true;
+                var tmp = " ";
+                for (i=2; i<=n/2; i++){
+                    if (n%i == 0){
+                        flag = false;
+                        tmp += i+" ";
+                    }
+                }
+
+                if (flag == true){
+                    document.getElementById("result").innerHTML = "Yes";
+                }else{
+                    document.getElementById("result").innerHTML = "No, factor(s):"+tmp;
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <input type=text id="num" />
+        <button onclick="isPrime()">isPrime?</button>
+        <p id="result"></p>
+    </body>
+</html>

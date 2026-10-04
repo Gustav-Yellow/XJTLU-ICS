@@ -1,0 +1,7 @@
+#!/bin/bash
+
+export PYSPARK_DRIVER_PYTHON=$CONDA_DIR/envs/python2/bin/jupyter
+export PYSPARK_DRIVER_PYTHON_OPTS="notebook --no-browser"
+
+pyspark "$@"
+
